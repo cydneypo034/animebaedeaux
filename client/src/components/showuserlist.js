@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import UserCard from './usercard';
+import '../App.css';
 
 export default class ShowUserList extends Component {
 
@@ -29,12 +31,21 @@ export default class ShowUserList extends Component {
         const users = this.state.users;
         let userList;
 
-        
+        userList = users.map((user, key) => 
+            <UserCard user={user} key={key} />
+        ); 
 
 
         return (
             <div>
-                <h1>Hello</h1>
+                <h2 className="text-title">&#10048; Anime Bae &#10048;</h2>
+
+                <div className="text-center">
+                <button type="button" className="btn btn-light" data-mdb-ripple-color="dark">
+                            <a href="/create-user">&hearts; Add Yourself to Our Bae List &hearts;</a>
+                        </button>
+                </div>
+                <h1>{userList}</h1>
             </div>
         )
     }
