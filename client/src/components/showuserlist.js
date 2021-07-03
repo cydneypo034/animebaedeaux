@@ -37,7 +37,7 @@ export default class ShowUserList extends Component {
 
 
         return (
-            <div>
+            <div className="user-list">
                 <h2 className="text-title">&#10048; Anime Bae &#10048;</h2>
 
                 <div className="text-center">
@@ -45,7 +45,7 @@ export default class ShowUserList extends Component {
                             <a href="/create-user">&hearts; Add Yourself to Our Bae List &hearts;</a>
                         </button>
                 </div>
-                <h1>{userList}</h1>
+                <div className="card-wrapper">{userList}</div>
             </div>
         )
     }
