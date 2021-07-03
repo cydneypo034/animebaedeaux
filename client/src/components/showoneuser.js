@@ -35,12 +35,12 @@ export default class ShowOneUser extends Component {
             },
         }
         fetch('/api/users/'+ id, deletedUser)
-        .then(res => {
-                res.json()
+        .then(() => 
+            this.props.history.push('/'),
+            console.log('removed'))
+        .catch(err => {
+            console.log('error in deleting user')
         })
-        .then(data => 
-            console.log(data))
-            this.props.history.push('/')
     }
 
     render() {

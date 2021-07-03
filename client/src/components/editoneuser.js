@@ -17,14 +17,13 @@ export default class EditOneUser extends Component {
 
     fetchedUserGet = () => {
         fetch('/api/users/'+this.props.match.params.id)
-        .then(response => response.json())
+            .then(response => response.json())
                 .then(data => {
                     this.setState({ 
                         name: data.name,
                         favoriteAnime: data.favoriteAnime,
                         favoriteGame: data.favoriteGame
                      })
-                    console.log(data)
                 }).catch(error => {
                     console.log("error in displaying users!")
                 });
@@ -47,7 +46,8 @@ export default class EditOneUser extends Component {
         fetch('/api/users/'+this.props.match.params.id, UpdatedUser, {
             method: 'PUT',
             headers: { 
-                'Content-Type': 'application/json'},
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(UpdatedUser)
             })
             .then(response => response.json())
@@ -58,10 +58,10 @@ export default class EditOneUser extends Component {
                     favoriteGame: data.favoriteGame
                 })
                 this.props.history.push('/one-user/'+this.props.match.params.id)
+                //console.log(data);
         })
-        .then(data => console.log(data))
         .catch(error => {
-            console.log("error in editing user!")
+            console.log("error in editing users!")
         });
     }
 
@@ -108,7 +108,8 @@ export default class EditOneUser extends Component {
                             onChange={this.onChange} />
                         </div>
 
-                        <button type="submit" className="btn btn-light" data-mdb-ripple-color="dark">Update Me &#10048;</button>
+                        <button type="submit" className="btn btn-light" 
+                        data-mdb-ripple-color="dark">Update Me &#10048;</button>
                     </form>
 
                     </div>
