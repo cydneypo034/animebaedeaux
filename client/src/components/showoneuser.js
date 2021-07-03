@@ -19,7 +19,7 @@ export default class ShowOneUser extends Component {
         fetch('/api/users/'+this.props.match.params.id)
             .then(response => response.json())
             .then(data => {
-                this.setState({ users: data })
+                this.setState({ user: data })
                 console.log(data)
             }).catch(error => {
                 console.log("error in displaying user!")

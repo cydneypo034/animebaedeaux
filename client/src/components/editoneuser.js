@@ -60,6 +60,9 @@ export default class EditOneUser extends Component {
                 this.props.history.push('/one-user/'+this.props.match.params.id)
         })
         .then(data => console.log(data))
+        .catch(error => {
+            console.log("error in editing user!")
+        });
     }
 
 

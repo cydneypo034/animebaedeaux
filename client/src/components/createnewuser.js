@@ -26,7 +26,7 @@ export default class CreateNewUser extends Component {
         fetch('/api/users', {
         method: 'POST',
         headers: {
-            Accept: 'application/json',
+            'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
