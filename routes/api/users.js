@@ -1,9 +1,9 @@
-import express from "express";
+const express = require("express");
 const router = express.Router();
 
 const User = require('../../models/users');
 
-router.get('/test', (req, res) => res.send('book route testing!'))
+//router.get('/test', (req, res) => res.send('book route testing!'))
 
 router.get('/', (req, res) => {
     User.find()

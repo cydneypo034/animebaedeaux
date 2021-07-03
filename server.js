@@ -1,7 +1,7 @@
-import express from "express";
-import mongoose from "mongoose";
-import config from "config";
-import dotenv from "dotenv";
+const express = require("express");
+const mongoose = require("mongoose");
+//import config from "config";
+const dotenv = require("dotenv");
 const app = express();
 
 //////////database creation////////////
@@ -30,8 +30,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 ////////////routes////////////////////
-app.get('/', (req, res) => res.send('Hello!'));
+//app.get('/', (req, res) => res.send('Hello!'));
+const routes = require('./routes/api/users.js');
+app.use('/api/users', routes);
 
-//port
+////////////port///////////////////////
 const port = process.env.PORT || 8082;
 app.listen(port, () => console.log(`Server running on ${port}`))
