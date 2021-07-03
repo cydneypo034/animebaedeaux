@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 const app = express();
 
 //////////database creation////////////
-dotenv.config();
+dotenv.config();  //DO NOT REMOVE THIS FROM UP TOP
 const url = process.env.MONGO_URL
 const connectDB = async () => {
     try {
