@@ -44,19 +44,20 @@ export default class EditOneUser extends Component {
                 favoriteGame: this.state.favoriteGame
         }
         
-        fetch('/api/users'+this.props.match.params.id, UpdatedUser, {
+        fetch('/api/users/'+this.props.match.params.id, UpdatedUser, {
             method: 'PUT',
             headers: { 
                 'Content-Type': 'application/json'},
-            body: JSON.stringify(data)
+            body: JSON.stringify(UpdatedUser)
             })
+            .then(response => response.json())
             .then(data => {
                 this.setState({
                     name: data.name,
                     favoriteAnime: data.favoriteAnime,
                     favoriteGame: data.favoriteGame
                 })
-                this.props.history.push('/')
+                this.props.history.push('/one-user/'+this.props.match.params.id)
         })
         .then(data => console.log(data))
     }
@@ -64,10 +65,10 @@ export default class EditOneUser extends Component {
 
     render() {
         return (
-            <div>
+            <div className="user-list">
                 <div className="createNewUser">
 
-                    <h2 className="create-user-page-title">Edit Yourself Here &#10048;</h2>
+                    <h2 className="text-title">Edit Yourself Here &#10048;</h2>
 
                     <div className="text-center">
                     <button type="button" className="btn btn-light" data-mdb-ripple-color="dark">
