@@ -4,10 +4,11 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const app = express();
 const path = require("path");
+const cors = require("cors");
 
-//////////database creation////////////
+//////////database creation//////////// this goes first!
 dotenv.config();  //DO NOT REMOVE THIS FROM UP TOP
-const url = process.env.MONGO_URL
+const url = process.env.REACT_APP_MONGO_URL
 const connectDB = async () => {
     try {
         await mongoose.connect(
@@ -26,7 +27,19 @@ const connectDB = async () => {
 };
 connectDB();
 
-/////////////heroku build/////////////
+app.use(cors());
+
+////////////middleware////////////////
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+///////origin headers///////////////
+////////////routes////////////////////
+//app.get('/', (req, res) => res.send('Hello!'));
+const routes = require('./routes/api/users.js');
+app.use('/api/users', routes);
+
+/////////////heroku build///////////// place this last!
 
 //__dirname = path.resolve();
 //heroku static folder
@@ -42,16 +55,6 @@ if(process.env.NODE_ENV ==='production'){
         res.send("API is running..")
     })
 }
-
-////////////middleware////////////////
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-///////origin headers///////////////
-////////////routes////////////////////
-//app.get('/', (req, res) => res.send('Hello!'));
-const routes = require('./routes/api/users.js');
-app.use('/api/users', routes);
 
 ////////////port///////////////////////
 const port = process.env.PORT || 8082;

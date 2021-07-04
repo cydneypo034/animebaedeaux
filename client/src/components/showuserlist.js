@@ -7,7 +7,7 @@ export default class ShowUserList extends Component {
     constructor(props){
         super(props);
         this.state = {
-            users: []
+            users: [],
         };
     }
 
@@ -19,7 +19,9 @@ export default class ShowUserList extends Component {
         fetch('/api/users')
             .then(response => response.json())
             .then(data => {
-                this.setState({ users: data })
+                this.setState({ 
+                    isLoaded: true,
+                    users: data })
                 console.log(data)
                 //window.location.reload();
             }).catch(error => {
