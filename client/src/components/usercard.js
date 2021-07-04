@@ -5,7 +5,7 @@ const UserCard = (props) => {
     const user = props.user;
 
         return (
-            <div className="container px-1" style={{ width: "23rem", height: "18rem"}}>
+            <div className="container px-1" style={{ width: "23rem", height: "11rem"}}>
                 <div className="col">
                     <div className="p-1">
 

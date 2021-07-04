@@ -43,7 +43,7 @@ export default class CreateNewUser extends Component {
     }
     render() {
         return (
-            <div className="user-list">
+            <div className="createuser-list">
 
                 <h2 className="text-title">Add Yourself Here &#10048;</h2>
 

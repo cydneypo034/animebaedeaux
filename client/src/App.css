@@ -38,6 +38,27 @@
   min-width: 100px;
 }
 
+.createuser-list {
+  background: url('./project-images/moon-anime-background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  min-width: 100px;
+}
+.edituser-list {
+  background: url('./project-images/pastelpink-anime-background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  min-width: 100px;
+}
+
 .card-text {
   font-family: 'Nanum Gothic Coding', monospace;
   font-size: 17px;

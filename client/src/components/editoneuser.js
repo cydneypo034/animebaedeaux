@@ -5,9 +5,9 @@ export default class EditOneUser extends Component {
         super(props);
         console.log(this.props.match.params.id)
         this.state = {
-            name: '',
-            favoriteAnime: '',
-            favoriteGame: ''
+                name: '',
+                favoriteAnime: '',
+                favoriteGame: ''
         }
     }
 
@@ -24,10 +24,12 @@ export default class EditOneUser extends Component {
                         favoriteAnime: data.favoriteAnime,
                         favoriteGame: data.favoriteGame
                      })
+                     console.log(data);
                 }).catch(error => {
                     console.log("error in displaying users!")
                 });
     }
+
 
     onChange = e => {
         this.setState({
@@ -39,36 +41,36 @@ export default class EditOneUser extends Component {
         e.preventDefault();
         const UpdatedUser = {
             name: this.state.name,
-                favoriteAnime: this.state.favoriteAnime,
-                favoriteGame: this.state.favoriteGame
+            favoriteAnime: this.state.favoriteAnime,
+            favoriteGame: this.state.favoriteGame
         }
         
-        fetch('/api/users/'+this.props.match.params.id, UpdatedUser, {
+        fetch('/api/users/'+this.props.match.params.id, {
             method: 'PUT',
+            body: JSON.stringify(UpdatedUser),
             headers: { 
+                'Accept' : 'application/json',
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(UpdatedUser)
+            }
             })
             .then(response => response.json())
             .then(data => {
-                this.setState({
-                    name: data.name,
-                    favoriteAnime: data.favoriteAnime,
-                    favoriteGame: data.favoriteGame
-                })
+                    this.setState({
+                        name: data.name,
+                        favoriteAnime: data.favoriteAnime,
+                        favoriteGame: data.favoriteGame
+                    })
                 this.props.history.push('/one-user/'+this.props.match.params.id)
-                //console.log(data);
-        })
-        .catch(error => {
-            console.log("error in editing users!")
-        });
+                console.log(data);
+                })
+            .catch(error => {
+                console.log("error in editing users!")
+            });
     }
-
 
     render() {
         return (
-            <div className="user-list">
+            <div className="edituser-list">
                 <div className="createNewUser">
 
                     <h2 className="text-title">Edit Yourself Here &#10048;</h2>
@@ -86,7 +88,7 @@ export default class EditOneUser extends Component {
                             placeholder="Name" 
                             name="name" 
                             className="form-control"
-                            value={this.state.name}
+                            value={this.state.name || ""}
                             onChange={this.onChange} />
                         </div>
 
@@ -95,7 +97,7 @@ export default class EditOneUser extends Component {
                             placeholder="Favorite Anime" 
                             name="favoriteAnime" 
                             className="form-control"
-                            value={this.state.favoriteAnime}
+                            value={this.state.favoriteAnime || ""}
                             onChange={this.onChange} />
                         </div>
 
@@ -104,7 +106,7 @@ export default class EditOneUser extends Component {
                             placeholder="Favorite Game" 
                             name="favoriteGame" 
                             className="form-control"
-                            value={this.state.favoriteGame}
+                            value={this.state.favoriteGame || ""}
                             onChange={this.onChange} />
                         </div>
 
