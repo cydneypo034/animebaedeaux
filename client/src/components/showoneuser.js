@@ -1,11 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import {Link} from 'react-router-dom';
 
-export default class ShowOneUser extends Component {
+class ShowOneUser extends React.Component {
 
     constructor(props){
         super(props);
-        console.log(this.props.match.params.id)
         this.state = {
             user: {}
         };
@@ -13,8 +12,9 @@ export default class ShowOneUser extends Component {
 
     componentDidMount(){
         this.fetchOneUser();
-    }
+        console.log(this.props.match && this.props.match.params.id);
 
+    }
     fetchOneUser = () => {
         fetch('/api/users/'+this.props.match.params.id)
             .then(response => response.json())
@@ -22,11 +22,11 @@ export default class ShowOneUser extends Component {
                 this.setState({ user: data })
                 console.log(data)
             }).catch(error => {
-                console.log("error in displaying user!")
+                console.log("error in displaying user!" + error)
             });
     }
 
-    
+
     onDelete(id) {
         const deletedUser = {
             method: 'DELETE',
@@ -42,6 +42,14 @@ export default class ShowOneUser extends Component {
             console.log('error in deleting user')
         })
     }
+
+    componentDidUpdate(prevProps){
+        if(this.props.id !== prevProps.id){
+            this.fetchOneUser(this.props.id);
+            console.log(prevProps);
+        }
+    }
+
 
     render() {
         const user = this.state.user;
@@ -65,7 +73,7 @@ export default class ShowOneUser extends Component {
         
                                     <div id="button-addition">
                                     <button type="button" className="btn btn-light" data-mdb-ripple-color="dark">
-                                        <Link to={`/edit-user/${this.props.match.params.id}`}>&hearts; Edit This Bae &hearts;</Link>
+                                       //<Link to={`/edit-user/${this.props.match.params.id}`}>&hearts; Edit This Bae &hearts;</Link>
                                     </button>
                                     </div>
         
@@ -89,3 +97,5 @@ export default class ShowOneUser extends Component {
         )
     }
 }
+
+export default withRouter(ShowOneUser);
