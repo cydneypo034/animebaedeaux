@@ -5,6 +5,7 @@ class ShowOneUser extends React.Component {
 
     constructor(props){
         super(props);
+        
         this.state = {
             user: {}
         };
@@ -72,8 +73,9 @@ class ShowOneUser extends React.Component {
                                     </div>
         
                                     <div id="button-addition">
-                                    <button type="button" className="btn btn-light" data-mdb-ripple-color="dark">
-                                       //<Link to={`/edit-user/${this.props.match.params.id}`}>&hearts; Edit This Bae &hearts;</Link>
+                                    <button type="button" className="btn btn-light" data-mdb-ripple-color="dark"
+                                    >
+                                       <Link className="edit-link" to={"/edit-user/" + this.props.match.params.id}>&hearts; Edit This Bae &hearts;</Link>
                                     </button>
                                     </div>
         
@@ -98,4 +100,4 @@ class ShowOneUser extends React.Component {
     }
 }
 
-export default withRouter(ShowOneUser);
+export default ShowOneUser;
