@@ -104,8 +104,6 @@ and (max-width: 812px) {
     margin: auto;
     padding: 0;
     box-shadow: .5rem .5rem 3rem rgba(0,0,0,0.2);
-    height: 9rem;
-    width: 17rem;
   }
 
   @font-face {

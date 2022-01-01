@@ -44,14 +44,6 @@ class ShowOneUser extends React.Component {
         })
     }
 
-    componentDidUpdate(prevProps){
-        if(this.props.id !== prevProps.id){
-            this.fetchOneUser(this.props.id);
-            console.log(prevProps);
-        }
-    }
-
-
     render() {
         const user = this.state.user;
                    let OneUserCard = <div className="container">
@@ -93,7 +85,7 @@ class ShowOneUser extends React.Component {
 
         return (
             <div className="user-list">
-                <h2 className="text-title">meet the bae's &#10048;</h2>
+                <h2 className="text-title">meet our bae &#10048;</h2>
                 <div>{OneUserCard}</div>
             </div>
         )
