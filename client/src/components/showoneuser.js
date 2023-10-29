@@ -17,7 +17,7 @@ class ShowOneUser extends React.Component {
 
     }
     fetchOneUser = () => {
-        fetch('/api/users/'+this.props.match.params.id)
+        fetch('https://animebae.onrender.com/api/users/' + this.props.match.params.id)
             .then(response => response.json())
             .then(data => {
                 this.setState({ user: data })

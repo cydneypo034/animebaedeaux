@@ -16,7 +16,7 @@ export default class ShowUserList extends Component {
     }
 
     fetchUsers = () => {
-        fetch('/api/users')
+        fetch('https://animebae.onrender.com/api/users')
             .then(response => response.json())
             .then(data => {
                 this.setState({ 

@@ -16,7 +16,7 @@ export default class EditOneUser extends Component {
     }
 
     fetchedUserGet = () => {
-        fetch('/api/users/'+this.props.match.params.id)
+        fetch('https://animebae.onrender.com/api/users/'+ this.props.match.params.id)
             .then(response => response.json())
                 .then(data => {
                     this.setState({ 
@@ -45,7 +45,7 @@ export default class EditOneUser extends Component {
             favoriteGame: this.state.favoriteGame
         }
         
-        fetch('/api/users/'+this.props.match.params.id, {
+        fetch('https://animebae.onrender.com/api/users/' + this.props.match.params.id, {
             method: 'PUT',
             body: JSON.stringify(UpdatedUser),
             headers: { 
