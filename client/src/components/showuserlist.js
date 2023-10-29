@@ -23,7 +23,6 @@ export default class ShowUserList extends Component {
                     isLoaded: true,
                     users: data })
                 console.log(data)
-                //window.location.reload();
             }).catch(error => {
                 console.log("error in displaying users!")
             });
