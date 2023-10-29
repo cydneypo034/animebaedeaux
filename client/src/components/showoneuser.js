@@ -17,7 +17,7 @@ class ShowOneUser extends React.Component {
 
     }
     fetchOneUser = () => {
-        fetch('https://animebae.onrender.com/api/users/' + this.props.match.params.id)
+        fetch('/api/users/' + this.props.match.params.id)
             .then(response => response.json())
             .then(data => {
                 this.setState({ user: data })
@@ -54,12 +54,6 @@ class ShowOneUser extends React.Component {
                                     </button>
                                     </div>
         
-                                    <div id="button-addition">
-                                        <button type="button" className="btn btn-light" data-mdb-ripple-color="dark" 
-                                        onClick={this.onDelete.bind(this, this.props.match.params.id)}>
-                                        &hearts; delete this bae &hearts;
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>

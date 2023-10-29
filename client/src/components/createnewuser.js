@@ -23,11 +23,12 @@ export default class CreateNewUser extends Component {
             favoriteGame: this.state.favoriteGame
         }
 
-        fetch('https://animebae.onrender.com/api/users', {
+        fetch('/api/users', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*' 
         },
         body: JSON.stringify(userData)
         })

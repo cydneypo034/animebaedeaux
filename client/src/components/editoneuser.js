@@ -45,7 +45,7 @@ export default class EditOneUser extends Component {
             favoriteGame: this.state.favoriteGame
         }
         
-        fetch('https://animebae.onrender.com/api/users/' + this.props.match.params.id, {
+        fetch('/api/users/' + this.props.match.params.id, {
             method: 'PUT',
             body: JSON.stringify(UpdatedUser),
             headers: { 
