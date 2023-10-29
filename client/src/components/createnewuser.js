@@ -17,7 +17,7 @@ export default class CreateNewUser extends Component {
     onSubmit = e => {
         e.preventDefault();
 
-        const data = {
+        const userData = {
             name: this.state.name,
             favoriteAnime: this.state.favoriteAnime,
             favoriteGame: this.state.favoriteGame
@@ -29,7 +29,7 @@ export default class CreateNewUser extends Component {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(userData)
         })
         .then(res => {
             this.setState({

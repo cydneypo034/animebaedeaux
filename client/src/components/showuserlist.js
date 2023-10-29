@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import UserCard from './usercard';
+import UserCard from './usercard.js';
 import '../App.css';
 
 export default class ShowUserList extends Component {
@@ -7,7 +7,7 @@ export default class ShowUserList extends Component {
     constructor(props){
         super(props);
         this.state = {
-            users: [],
+            users: []
         };
     }
 

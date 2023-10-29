@@ -27,23 +27,6 @@ class ShowOneUser extends React.Component {
             });
     }
 
-
-    onDelete(id) {
-        const deletedUser = {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        }
-        fetch('/api/users/'+ id, deletedUser)
-        .then(() => 
-            this.props.history.push('/'),
-            console.log('removed'))
-        .catch(err => {
-            console.log('error in deleting user')
-        })
-    }
-
     render() {
         const user = this.state.user;
                    let OneUserCard = <div className="container">
