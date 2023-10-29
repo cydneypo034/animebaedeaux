@@ -16,15 +16,15 @@ export default class ShowUserList extends Component {
     }
 
     fetchUsers = () => {
-        fetch('/api/users')
+        fetch('https://anime-bae.onrender.com/api/users')
             .then(res => res.json())
             .then(data => {
                 this.setState({ 
                     isLoaded: true,
                     users: data })
-                console.log(data)
+                console.log("success in getting all users", data)
             }).catch(error => {
-                console.log("error in displaying users!")
+                console.log("error in displaying users!", error)
             });
     }
 

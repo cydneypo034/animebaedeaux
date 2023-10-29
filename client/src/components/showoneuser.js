@@ -13,15 +13,15 @@ class ShowOneUser extends React.Component {
 
     componentDidMount(){
         this.fetchOneUser();
-        console.log(this.props.match && this.props.match.params.id);
+        //console.log(this.props.match && this.props.match.params.id);
 
     }
     fetchOneUser = () => {
-        fetch('/api/users/' + this.props.match.params.id)
+        fetch('https://anime-bae.onrender.com/api/users/' + this.props.match.params.id)
             .then(response => response.json())
             .then(data => {
                 this.setState({ user: data })
-                console.log(data)
+                console.log("success in getting one user", data)
             }).catch(error => {
                 console.log("error in displaying user!" + error)
             });

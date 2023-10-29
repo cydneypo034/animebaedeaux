@@ -11,25 +11,25 @@ export default class EditOneUser extends Component {
         }
     }
 
-    componentDidMount() {
-        this.fetchedUserGet();
-    }
-
     fetchedUserGet = () => {
-        fetch('https://animebae.onrender.com/api/users/'+ this.props.match.params.id)
-            .then(response => response.json())
+        fetch('https://anime-bae.onrender.com/api/users/' + this.props.match.params.id)
+            .then(res => res.json())
                 .then(data => {
                     this.setState({ 
                         name: data.name,
                         favoriteAnime: data.favoriteAnime,
                         favoriteGame: data.favoriteGame
                      })
-                     console.log(data);
-                }).catch(error => {
-                    console.log("error in displaying users!")
+                     console.log("success in getting one user", data)
+                    }).catch(error => {
+                    console.log("error in getting user info!", error)
                 });
-    }
-
+            }
+            
+    
+    componentDidMount() {
+                this.fetchedUserGet();
+            }
 
     onChange = e => {
         this.setState({
@@ -45,12 +45,13 @@ export default class EditOneUser extends Component {
             favoriteGame: this.state.favoriteGame
         }
         
-        fetch('/api/users/' + this.props.match.params.id, {
+        fetch('https://anime-bae.onrender.com/api/users/' + this.props.match.params.id, {
             method: 'PUT',
             body: JSON.stringify(UpdatedUser),
             headers: { 
                 'Accept' : 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*' 
             }
             })
             .then(response => response.json())
@@ -61,10 +62,10 @@ export default class EditOneUser extends Component {
                         favoriteGame: data.favoriteGame
                     })
                 this.props.history.push('/one-user/'+this.props.match.params.id)
-                console.log(data);
+                console.log("success in updating user", data);
                 })
             .catch(error => {
-                console.log("error in editing users!")
+                console.log("error in editing users!", error)
             });
     }
 
